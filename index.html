@@ -188,63 +188,6 @@
   </div>
 </section>
 
-<!-- ===== KEY FINDING ===== -->
-<section id="findings">
-  <div class="container">
-    <h2 class="section-title">Key Findings</h2>
-
-    <div class="key-finding">
-      <div class="kf-icon">🔑</div>
-      <div class="kf-text">
-        <strong>PBEBench-Lite is the strongest predictor of real Sound Law Induction performance.</strong>
-        <p>With Pearson r = 0.827 (p = 0.0017), PBEBench-Lite outperforms both CLUTRR (r = 0.636) and
-        SLR-Bench (r = 0.809) as a proxy for a model's ability on real historical linguistics tasks.</p>
-      </div>
-    </div>
-
-    <table class="comparison">
-      <thead>
-        <tr>
-          <th>Benchmark</th>
-          <th>Pearson r</th>
-          <th>p-value</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CLUTRR</td>
-          <td>0.6364</td>
-          <td>0.0353</td>
-          <td>Kinship reasoning tasks</td>
-        </tr>
-        <tr>
-          <td>SLR-Bench</td>
-          <td>0.8091</td>
-          <td>0.0026</td>
-          <td>Sensitive to Prolog syntax familiarity</td>
-        </tr>
-        <tr class="best">
-          <td>PBEBench-Lite ✓</td>
-          <td>0.8273</td>
-          <td>0.0017</td>
-          <td>Best predictor; knowledge-free, contamination-resistant</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div style="margin-top:2rem">
-      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Additional Observations</h3>
-      <ul style="list-style:disc;padding-left:1.5rem;color:#4a4a4a;line-height:2;font-size:0.95rem;">
-        <li><strong>Reasoning models dominate</strong> the top of the synthesis leaderboard, with GPT-5, gpt-oss-120b, and Gemini 2.5 Flash in the top 3.</li>
-        <li><strong>Edit Similarity diverges from Pass@1</strong> for Claude models, which tend to produce well-formed but non-passing programs—suggesting they capture the structure but fail on edge cases.</li>
-        <li><strong>Validity and correctness decouple</strong>: o3-mini achieves 99.5% valid rate but only 19.6% Pass@1, indicating high syntactic competence but low semantic reasoning.</li>
-        <li><strong>Open-source MoE models</strong> (Qwen3-30B-A3B) are competitive with much larger dense models at &lt;30% of the parameter count.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ABOUT PBEBENCH ===== -->
 <section id="about">
   <div class="container">
@@ -351,8 +294,7 @@
   <div class="container">
     <p>
       <img src="images/llab_logo.jpeg" alt="LTI CMU" style="height:28px;vertical-align:middle;margin-right:0.5rem;border-radius:3px;">
-      Language Technologies Institute, Carnegie Mellon University &nbsp;·&nbsp;
-      Ohio State University &nbsp;·&nbsp; Independent Researcher
+      Language Technologies Institute, Carnegie Mellon University
     </p>
     <p style="margin-top:0.75rem;">
       Dataset: <a href="https://huggingface.co/datasets/changelinglab/PBEBench-Lite" target="_blank">🤗 changelinglab/PBEBench-Lite</a>
