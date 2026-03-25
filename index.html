@@ -60,31 +60,6 @@
   </div>
 </header>
 
-<!-- ===== ABSTRACT ===== -->
-<section id="abstract">
-  <div class="container">
-    <h2 class="section-title">Abstract</h2>
-    <div class="abstract-box">
-      <p>
-        We introduce <strong>PBEBench</strong>, a contamination-resistant benchmark for evaluating large language models
-        on <em>sound law induction</em>—the task of recovering phonological rewrite rules from input-output examples
-        expressed as a Programming by Examples (PBE) problem. Sound law induction is a classical problem in
-        historical linguistics that requires multi-step symbolic reasoning over structured examples, making it
-        an ideal testbed for measuring genuine reasoning ability beyond pattern matching or memorization.
-      </p>
-      <p>
-        PBEBench operationalizes this as a two-task evaluation: (1) <strong>Sound Law Synthesis</strong>, where
-        models must synthesize a sequence of context-sensitive rewrite rules (expressed in a restricted DSL)
-        that correctly transforms given input strings into output strings across all provided examples; and
-        (2) <strong>Rule Reordering</strong>, where models receive a set of correct rules in shuffled order and
-        must determine the unique correct ordering. The benchmark features controllable difficulty via complexity
-        parameters, knowledge-free construction (rules are drawn from uncontaminated historical corpora), and
-        strong correlation with real sound law induction performance—outperforming existing benchmarks.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== OVERVIEW ===== -->
 <section id="overview">
   <div class="container">
