@@ -93,6 +93,54 @@
         <img src="images/PBEBench Data Instance.png" alt="PBEBench Data Instance" class="overview-img">
       </div>
     </div>
+
+    <div style="margin-top:3rem">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">Why Historical Linguistics?</h3>
+      <p style="color:#4a4a4a;margin-bottom:1.5rem;">
+        PBEBench tests models on a form of multi-step reasoning that is <em>genuinely hard</em>: reasoning about
+        <strong>ordered, context-sensitive rewrite rules</strong> that must collectively explain a set of
+        input/output string transformations. The domain is <strong>historical phonology</strong>—the study of
+        how sounds change over time in human languages—chosen because it is combinatorially complex,
+        knowledge-free (no memorized facts help), and entirely absent from standard pre-training corpora.
+      </p>
+
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">BFCC Rule Interactions</h3>
+      <p style="color:#4a4a4a;margin-bottom:1.25rem;">
+        The central challenge in PBEBench is reasoning about <strong>rule ordering interactions</strong>.
+        When two rewrite rules A and B can both apply to a string, their relative order can matter.
+        These interactions are classified into four BFCC types:
+      </p>
+
+      <div class="bfcc-grid">
+        <div class="bfcc-card">
+          <h4>Feeding (F)</h4>
+          <p>Rule A creates the context for Rule B to apply. Applying A before B allows B to fire on more strings. The interaction is productive.</p>
+        </div>
+        <div class="bfcc-card">
+          <h4>Bleeding (B)</h4>
+          <p>Rule A removes the context that Rule B would require. Applying A before B prevents B from firing on those strings.</p>
+        </div>
+        <div class="bfcc-card">
+          <h4>Counter-Feeding (CF)</h4>
+          <p>Rule B is applied before A, even though A could have fed B. The order chosen counteracts a potential feeding relationship.</p>
+        </div>
+        <div class="bfcc-card">
+          <h4>Counter-Bleeding (CB)</h4>
+          <p>Rule B is applied before A, even though A could have bled B. The order preserves applications that would otherwise be blocked.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">Why Contamination-Resistant?</h3>
+        <p style="color:#4a4a4a;line-height:1.8;">
+          PBEBench draws its rule sets from <strong>historical sound change data</strong> across dozens of language
+          families. These rule sets are not available in structured, machine-readable form in standard pre-training
+          corpora, and the PBE framing (provide examples, synthesize rules) is distinct from any existing NLP task.
+          Furthermore, the <em>controllable difficulty</em> axis means that we can always generate harder instances
+          that a contaminated model would fail on, providing a renewable evaluation resource.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -159,58 +207,6 @@
         <h4>Reorder UAcc</h4>
         <p>Unordered accuracy: fraction where the model identifies all pairwise rule orderings correctly, regardless of final sequence format.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT PBEBENCH ===== -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About PBEBench</h2>
-
-    <p style="color:#4a4a4a;margin-bottom:1.5rem;">
-      PBEBench tests models on a form of multi-step reasoning that is <em>genuinely hard</em>: reasoning about
-      <strong>ordered, context-sensitive rewrite rules</strong> that must collectively explain a set of
-      input/output string transformations. The domain is <strong>historical phonology</strong>—the study of
-      how sounds change over time in human languages—chosen because it is combinatorially complex,
-      knowledge-free (no memorized facts help), and entirely absent from standard pre-training corpora.
-    </p>
-
-    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">BFCC Rule Interactions</h3>
-    <p style="color:#4a4a4a;margin-bottom:1.25rem;">
-      The central challenge in PBEBench is reasoning about <strong>rule ordering interactions</strong>.
-      When two rewrite rules A and B can both apply to a string, their relative order can matter.
-      These interactions are classified into four BFCC types:
-    </p>
-
-    <div class="bfcc-grid">
-      <div class="bfcc-card">
-        <h4>Feeding (F)</h4>
-        <p>Rule A creates the context for Rule B to apply. Applying A before B allows B to fire on more strings. The interaction is productive.</p>
-      </div>
-      <div class="bfcc-card">
-        <h4>Bleeding (B)</h4>
-        <p>Rule A removes the context that Rule B would require. Applying A before B prevents B from firing on those strings.</p>
-      </div>
-      <div class="bfcc-card">
-        <h4>Counter-Feeding (CF)</h4>
-        <p>Rule B is applied before A, even though A could have fed B. The order chosen counteracts a potential feeding relationship.</p>
-      </div>
-      <div class="bfcc-card">
-        <h4>Counter-Bleeding (CB)</h4>
-        <p>Rule B is applied before A, even though A could have bled B. The order preserves applications that would otherwise be blocked.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:2rem">
-      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">Why Contamination-Resistant?</h3>
-      <p style="color:#4a4a4a;line-height:1.8;">
-        PBEBench draws its rule sets from <strong>historical sound change data</strong> across dozens of language
-        families. These rule sets are not available in structured, machine-readable form in standard pre-training
-        corpora, and the PBE framing (provide examples, synthesize rules) is distinct from any existing NLP task.
-        Furthermore, the <em>controllable difficulty</em> axis means that we can always generate harder instances
-        that a contaminated model would fail on, providing a renewable evaluation resource.
-      </p>
     </div>
   </div>
 </section>
