@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PBEBench: Multi-Step Programming by Examples Benchmark</title>
+  <meta name="description" content="PBEBench is a contamination-resistant, multi-step Programming by Examples benchmark for evaluating LLMs on sound law induction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo-row">
+      <img src="images/llab_logo.jpeg" alt="Language Technologies Institute, CMU" class="header-logo">
+      <div class="header-venue">NeurIPS 2025 Submission</div>
+    </div>
+
+    <h1 class="paper-title">
+      <span>PBEBench</span>: A Contamination-Resistant Multi-Step<br>
+      Programming by Examples Benchmark
+    </h1>
+
+    <p class="authors">
+      Atharva Naik<sup>1</sup>,&nbsp;
+      Darsh Agrawal<sup>1</sup>,&nbsp;
+      Prakam<sup>1</sup>,&nbsp;
+      Yash Mathur<sup>1</sup>,&nbsp;
+      Manav Kapadnis<sup>3</sup>,<br>
+      Yuwei An<sup>2</sup>,&nbsp;
+      Clayton Marr<sup>1</sup>,&nbsp;
+      Carolyn Rose<sup>1</sup>,&nbsp;
+      David Mortensen<sup>1</sup>
+    </p>
+
+    <p class="affiliations">
+      <sup>1</sup>Carnegie Mellon University &nbsp;·&nbsp;
+      <sup>2</sup>Ohio State University &nbsp;·&nbsp;
+      <sup>3</sup>Independent Researcher
+    </p>
+
+    <div class="badge-row">
+      <a href="https://arxiv.org/pdf/2505.23126" class="badge-btn paper" target="_blank">
+        <span class="icon">📄</span> Paper
+      </a>
+      <a href="https://huggingface.co/datasets/changelinglab/PBEBench-Lite" class="badge-btn dataset" target="_blank">
+        <span class="icon">🤗</span> Dataset
+      </a>
+      <a href="https://github.com/ymathur/symbolic-library-agent" class="badge-btn github" target="_blank">
+        <span class="icon">💻</span> GitHub
+      </a>
+      <a href="#citation" class="badge-btn cite">
+        <span class="icon">📋</span> Cite
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABSTRACT ===== -->
+<section id="abstract">
+  <div class="container">
+    <h2 class="section-title">Abstract</h2>
+    <div class="abstract-box">
+      <p>
+        We introduce <strong>PBEBench</strong>, a contamination-resistant benchmark for evaluating large language models
+        on <em>sound law induction</em>—the task of recovering phonological rewrite rules from input-output examples
+        expressed as a Programming by Examples (PBE) problem. Sound law induction is a classical problem in
+        historical linguistics that requires multi-step symbolic reasoning over structured examples, making it
+        an ideal testbed for measuring genuine reasoning ability beyond pattern matching or memorization.
+      </p>
+      <p>
+        PBEBench operationalizes this as a two-task evaluation: (1) <strong>Sound Law Synthesis</strong>, where
+        models must synthesize a sequence of context-sensitive rewrite rules (expressed in a restricted DSL)
+        that correctly transforms given input strings into output strings across all provided examples; and
+        (2) <strong>Rule Reordering</strong>, where models receive a set of correct rules in shuffled order and
+        must determine the unique correct ordering. The benchmark features controllable difficulty via complexity
+        parameters, knowledge-free construction (rules are drawn from uncontaminated historical corpora), and
+        strong correlation with real sound law induction performance—outperforming existing benchmarks.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="overview">
+  <div class="container">
+    <h2 class="section-title">Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-text">
+        <p>
+          PBEBench frames <strong>sound law induction</strong> as a Programming by Examples problem.
+          Given a set of (input, output) string pairs illustrating a phonological change, an LLM must
+          synthesize a correct sequence of rewrite rules in a domain-specific language (DSL) that reproduces
+          every transformation.
+        </p>
+        <p>
+          Each problem instance specifies the DSL, a set of training examples, and optional held-out test
+          examples for validation. The benchmark is constructed from real historical linguistics data,
+          making it <strong>highly resistant to data contamination</strong> while remaining <strong>knowledge-free</strong>
+          (no linguistic knowledge is required to solve problems from the examples alone).
+        </p>
+        <p>
+          Difficulty is controlled via the <em>complexity</em> parameter: the number and type of
+          interaction constraints (BFCC relations) present in the rule set. Higher complexity requires
+          reasoning about ordering-sensitive rule interactions.
+        </p>
+        <div class="badge-row" style="margin-top:1.25rem">
+          <a href="https://huggingface.co/datasets/changelinglab/PBEBench-Lite" class="hf-btn" target="_blank">
+            🤗 Download on HuggingFace
+          </a>
+        </div>
+      </div>
+      <div>
+        <img src="images/PBEBench Data Instance.png" alt="PBEBench Data Instance" class="overview-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEADERBOARD ===== -->
+<section id="leaderboard">
+  <div class="container">
+    <h2 class="section-title">Leaderboard</h2>
+
+    <div class="leaderboard-header">
+      <p style="font-size:0.9rem;color:#666">
+        Evaluating <strong>23 models</strong> on Sound Law Synthesis (Pass@1, EditSim, ValidRate, Complexity)
+        and Rule Reordering (Acc, UAcc). Click any column header to sort.
+      </p>
+      <div class="leaderboard-legend">
+        <span class="legend-item"><span class="badge badge-reasoning">★</span> Reasoning model</span>
+        <span class="legend-item"><span class="badge badge-moe">■</span> Mixture-of-Experts</span>
+        <span class="legend-item"><span class="badge badge-closed">✸</span> Closed-source</span>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="leaderboard" id="leaderboard-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-col="name">Model</th>
+            <th>Type</th>
+            <th data-col="pass" class="sorted-desc">Pass@1 ↓</th>
+            <th data-col="edit_sim">Edit Sim</th>
+            <th data-col="valid_rate">Valid Rate</th>
+            <th data-col="complexity">Complexity</th>
+            <th data-col="reorder_acc">Reorder Acc</th>
+            <th data-col="reorder_uacc">Reorder UAcc</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-tbody">
+          <tr><td colspan="9" style="text-align:center;padding:2rem;color:#999">Loading leaderboard…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h4>Pass@1</h4>
+        <p>Fraction of problems where the model's first output is a fully correct program (passes all test cases).</p>
+      </div>
+      <div class="metric-card">
+        <h4>Edit Similarity</h4>
+        <p>Character-level edit similarity between generated and reference programs, averaging over all problems. Negative values indicate worse-than-empty outputs.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Valid Rate</h4>
+        <p>Fraction of outputs that parse as syntactically valid DSL programs, regardless of correctness.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Complexity</h4>
+        <p>Average number of BFCC interaction constraints in problems the model solved correctly. Higher = solves harder problems.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Reorder Acc</h4>
+        <p>Accuracy on the Rule Reordering task: fraction of problems where the model produces the exact correct ordering.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Reorder UAcc</h4>
+        <p>Unordered accuracy: fraction where the model identifies all pairwise rule orderings correctly, regardless of final sequence format.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY FINDING ===== -->
+<section id="findings">
+  <div class="container">
+    <h2 class="section-title">Key Findings</h2>
+
+    <div class="key-finding">
+      <div class="kf-icon">🔑</div>
+      <div class="kf-text">
+        <strong>PBEBench-Lite is the strongest predictor of real Sound Law Induction performance.</strong>
+        <p>With Pearson r = 0.827 (p = 0.0017), PBEBench-Lite outperforms both CLUTRR (r = 0.636) and
+        SLR-Bench (r = 0.809) as a proxy for a model's ability on real historical linguistics tasks.</p>
+      </div>
+    </div>
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Benchmark</th>
+          <th>Pearson r</th>
+          <th>p-value</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CLUTRR</td>
+          <td>0.6364</td>
+          <td>0.0353</td>
+          <td>Kinship reasoning tasks</td>
+        </tr>
+        <tr>
+          <td>SLR-Bench</td>
+          <td>0.8091</td>
+          <td>0.0026</td>
+          <td>Sensitive to Prolog syntax familiarity</td>
+        </tr>
+        <tr class="best">
+          <td>PBEBench-Lite ✓</td>
+          <td>0.8273</td>
+          <td>0.0017</td>
+          <td>Best predictor; knowledge-free, contamination-resistant</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:2rem">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Additional Observations</h3>
+      <ul style="list-style:disc;padding-left:1.5rem;color:#4a4a4a;line-height:2;font-size:0.95rem;">
+        <li><strong>Reasoning models dominate</strong> the top of the synthesis leaderboard, with GPT-5, gpt-oss-120b, and Gemini 2.5 Flash in the top 3.</li>
+        <li><strong>Edit Similarity diverges from Pass@1</strong> for Claude models, which tend to produce well-formed but non-passing programs—suggesting they capture the structure but fail on edge cases.</li>
+        <li><strong>Validity and correctness decouple</strong>: o3-mini achieves 99.5% valid rate but only 19.6% Pass@1, indicating high syntactic competence but low semantic reasoning.</li>
+        <li><strong>Open-source MoE models</strong> (Qwen3-30B-A3B) are competitive with much larger dense models at &lt;30% of the parameter count.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT PBEBENCH ===== -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About PBEBench</h2>
+
+    <p style="color:#4a4a4a;margin-bottom:1.5rem;">
+      PBEBench tests models on a form of multi-step reasoning that is <em>genuinely hard</em>: reasoning about
+      <strong>ordered, context-sensitive rewrite rules</strong> that must collectively explain a set of
+      input/output string transformations. The domain is <strong>historical phonology</strong>—the study of
+      how sounds change over time in human languages—chosen because it is combinatorially complex,
+      knowledge-free (no memorized facts help), and entirely absent from standard pre-training corpora.
+    </p>
+
+    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">BFCC Rule Interactions</h3>
+    <p style="color:#4a4a4a;margin-bottom:1.25rem;">
+      The central challenge in PBEBench is reasoning about <strong>rule ordering interactions</strong>.
+      When two rewrite rules A and B can both apply to a string, their relative order can matter.
+      These interactions are classified into four BFCC types:
+    </p>
+
+    <div class="bfcc-grid">
+      <div class="bfcc-card">
+        <h4>Feeding (F)</h4>
+        <p>Rule A creates the context for Rule B to apply. Applying A before B allows B to fire on more strings. The interaction is productive.</p>
+      </div>
+      <div class="bfcc-card">
+        <h4>Bleeding (B)</h4>
+        <p>Rule A removes the context that Rule B would require. Applying A before B prevents B from firing on those strings.</p>
+      </div>
+      <div class="bfcc-card">
+        <h4>Counter-Feeding (CF)</h4>
+        <p>Rule B is applied before A, even though A could have fed B. The order chosen counteracts a potential feeding relationship.</p>
+      </div>
+      <div class="bfcc-card">
+        <h4>Counter-Bleeding (CB)</h4>
+        <p>Rule B is applied before A, even though A could have bled B. The order preserves applications that would otherwise be blocked.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a;">Why Contamination-Resistant?</h3>
+      <p style="color:#4a4a4a;line-height:1.8;">
+        PBEBench draws its rule sets from <strong>historical sound change data</strong> across dozens of language
+        families. These rule sets are not available in structured, machine-readable form in standard pre-training
+        corpora, and the PBE framing (provide examples, synthesize rules) is distinct from any existing NLP task.
+        Furthermore, the <em>controllable difficulty</em> axis means that we can always generate harder instances
+        that a contaminated model would fail on, providing a renewable evaluation resource.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DATASET ===== -->
+<section id="dataset">
+  <div class="container">
+    <h2 class="section-title">Dataset</h2>
+
+    <div class="dataset-card">
+      <h3>PBEBench-Lite on HuggingFace 🤗</h3>
+      <p>
+        The <strong>PBEBench-Lite</strong> evaluation split is publicly available on HuggingFace Datasets.
+        It contains a curated set of sound law synthesis and rule reordering problems spanning a range of
+        difficulty levels (complexity 1–20), with complete DSL specifications, training examples, and
+        held-out test cases.
+      </p>
+      <a href="https://huggingface.co/datasets/changelinglab/PBEBench-Lite" class="hf-btn" target="_blank">
+        🤗 changelinglab/PBEBench-Lite
+      </a>
+      <div style="margin-top:1rem;font-size:0.88rem;color:#666;">
+        <strong>Splits available:</strong>
+        <ul style="list-style:disc;padding-left:1.25rem;margin-top:0.5rem;line-height:1.9;">
+          <li><code>synthesis</code> — Sound Law Synthesis problems (Pass@1, EditSim, ValidRate, Complexity)</li>
+          <li><code>reordering</code> — Rule Reordering problems (Acc, UAcc)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CITATION ===== -->
+<section id="citation">
+  <div class="container">
+    <h2 class="section-title">Citation</h2>
+    <p style="color:#4a4a4a;margin-bottom:1rem;">
+      If you use PBEBench in your research, please cite our paper:
+    </p>
+    <div class="citation-box">
+      <button class="copy-btn" onclick="copyCitation()">Copy</button>
+      <pre id="citation-text">@unpublished{naik2025pbebench,
+  title        = {{PBEBench}: A Contamination-Resistant Multi-Step
+                  Programming by Examples Benchmark},
+  author       = {Naik, Atharva and Agrawal, Darsh and Prakam and
+                  Mathur, Yash and Kapadnis, Manav and An, Yuwei and
+                  Marr, Clayton and Rose, Carolyn and Mortensen, David},
+  year         = {2025},
+  note         = {NeurIPS 2025 Submission},
+  url          = {https://ymathur.github.io/symbolic-library-agent}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      <img src="images/llab_logo.jpeg" alt="LTI CMU" style="height:28px;vertical-align:middle;margin-right:0.5rem;border-radius:3px;">
+      Language Technologies Institute, Carnegie Mellon University &nbsp;·&nbsp;
+      Ohio State University &nbsp;·&nbsp; Independent Researcher
+    </p>
+    <p style="margin-top:0.75rem;">
+      Dataset: <a href="https://huggingface.co/datasets/changelinglab/PBEBench-Lite" target="_blank">🤗 changelinglab/PBEBench-Lite</a>
+      &nbsp;·&nbsp;
+      Code: <a href="https://github.com/ymathur/symbolic-library-agent" target="_blank">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
