@@ -211,6 +211,100 @@
   </div>
 </section>
 
+<!-- ===== CASCADE LENGTH ANALYSIS ===== -->
+<section id="cascade-analysis">
+  <div class="container">
+    <h2 class="section-title">Difficulty by Cascade Length</h2>
+    <p style="color:#4a4a4a;margin-bottom:1.5rem;">
+      Performance of <strong>gpt-oss-120b</strong> on PBEBench across cascade lengths 2–20,
+      with sampling budget 32 and max sequence length 16,384.
+      Pass@1 drops monotonically with cascade length, revealing clear reasoning limits.
+    </p>
+    <div class="table-wrapper" style="max-width:480px">
+      <table class="comparison" id="cascade-table">
+        <thead>
+          <tr>
+            <th>Cascade Length</th>
+            <th style="text-align:right">First Code Block</th>
+            <th style="text-align:right">Last Code Block</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2</td> <td style="text-align:right">100.00%</td><td style="text-align:right">100.00%</td></tr>
+          <tr><td>3</td> <td style="text-align:right">100.00%</td><td style="text-align:right">100.00%</td></tr>
+          <tr><td>4</td> <td style="text-align:right">96.88%</td> <td style="text-align:right">96.88%</td></tr>
+          <tr><td>5</td> <td style="text-align:right">100.00%</td><td style="text-align:right">100.00%</td></tr>
+          <tr><td>6</td> <td style="text-align:right">96.88%</td> <td style="text-align:right">96.88%</td></tr>
+          <tr><td>7</td> <td style="text-align:right">96.88%</td> <td style="text-align:right">96.88%</td></tr>
+          <tr><td>8</td> <td style="text-align:right">96.88%</td> <td style="text-align:right">96.88%</td></tr>
+          <tr><td>9</td> <td style="text-align:right">84.38%</td> <td style="text-align:right">84.38%</td></tr>
+          <tr><td>10</td><td style="text-align:right">84.38%</td> <td style="text-align:right">84.38%</td></tr>
+          <tr><td>11</td><td style="text-align:right">87.50%</td> <td style="text-align:right">87.50%</td></tr>
+          <tr><td>12</td><td style="text-align:right">76.56%</td> <td style="text-align:right">76.56%</td></tr>
+          <tr><td>13</td><td style="text-align:right">67.19%</td> <td style="text-align:right">67.19%</td></tr>
+          <tr><td>14</td><td style="text-align:right">45.31%</td> <td style="text-align:right">45.31%</td></tr>
+          <tr><td>15</td><td style="text-align:right">50.00%</td> <td style="text-align:right">50.00%</td></tr>
+          <tr><td>16</td><td style="text-align:right">39.06%</td> <td style="text-align:right">39.06%</td></tr>
+          <tr><td>17</td><td style="text-align:right">28.12%</td> <td style="text-align:right">28.12%</td></tr>
+          <tr><td>18</td><td style="text-align:right">17.19%</td> <td style="text-align:right">17.19%</td></tr>
+          <tr><td>19</td><td style="text-align:right">7.81%</td>  <td style="text-align:right">7.81%</td></tr>
+          <tr><td>20</td><td style="text-align:right">4.69%</td>  <td style="text-align:right">4.69%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.82rem;color:#888;margin-top:0.75rem;">
+      Pass@1 reported for both the first and last code block extracted from model output.
+    </p>
+  </div>
+</section>
+
+<!-- ===== SAMPLING BUDGET ANALYSIS ===== -->
+<section id="sampling-budget">
+  <div class="container">
+    <h2 class="section-title">Performance across Sampling Budget (gpt-oss-120b)</h2>
+    <p style="color:#4a4a4a;margin-bottom:1.5rem;">
+      gpt-oss-120b performance with varying sampling budget, evaluated on the 64 PBEBench instances
+      with ground-truth cascade length 10 and max sequence length 16,384.
+    </p>
+    <div class="table-wrapper">
+      <table class="comparison" id="sampling-budget-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="vertical-align:bottom">Sampling Budget</th>
+            <th colspan="3" style="text-align:center;border-bottom:1px solid #555">First Code Block</th>
+            <th colspan="3" style="text-align:center;border-bottom:1px solid #555">Last Code Block</th>
+            <th rowspan="2" style="text-align:right;vertical-align:bottom">Nulls</th>
+          </tr>
+          <tr>
+            <th style="text-align:right">Pass@1</th>
+            <th style="text-align:right">Edit Sim</th>
+            <th style="text-align:right">Valid Rate</th>
+            <th style="text-align:right">Pass@1</th>
+            <th style="text-align:right">Edit Sim</th>
+            <th style="text-align:right">Valid Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td> <td style="text-align:right">25.00%</td><td style="text-align:right">70.84%</td><td style="text-align:right">97.76%</td><td style="text-align:right">25.00%</td><td style="text-align:right">70.84%</td><td style="text-align:right">97.76%</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td> <td style="text-align:right">50.00%</td><td style="text-align:right">79.31%</td><td style="text-align:right">97.52%</td><td style="text-align:right">50.00%</td><td style="text-align:right">79.31%</td><td style="text-align:right">97.52%</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td> <td style="text-align:right">60.94%</td><td style="text-align:right">90.81%</td><td style="text-align:right">98.30%</td><td style="text-align:right">60.94%</td><td style="text-align:right">90.81%</td><td style="text-align:right">98.30%</td><td style="text-align:right">5</td></tr>
+          <tr><td>8</td> <td style="text-align:right">73.44%</td><td style="text-align:right">94.77%</td><td style="text-align:right">95.88%</td><td style="text-align:right">73.44%</td><td style="text-align:right">94.77%</td><td style="text-align:right">95.88%</td><td style="text-align:right">4</td></tr>
+          <tr><td>12</td><td style="text-align:right">78.12%</td><td style="text-align:right">96.19%</td><td style="text-align:right">96.84%</td><td style="text-align:right">78.12%</td><td style="text-align:right">96.19%</td><td style="text-align:right">96.84%</td><td style="text-align:right">10</td></tr>
+          <tr><td>16</td><td style="text-align:right">82.81%</td><td style="text-align:right">96.79%</td><td style="text-align:right">97.06%</td><td style="text-align:right">82.81%</td><td style="text-align:right">96.79%</td><td style="text-align:right">97.06%</td><td style="text-align:right">11</td></tr>
+          <tr><td>20</td><td style="text-align:right">85.94%</td><td style="text-align:right">96.91%</td><td style="text-align:right">97.88%</td><td style="text-align:right">85.94%</td><td style="text-align:right">96.91%</td><td style="text-align:right">97.88%</td><td style="text-align:right">26</td></tr>
+          <tr><td>24</td><td style="text-align:right">79.69%</td><td style="text-align:right">97.25%</td><td style="text-align:right">96.38%</td><td style="text-align:right">79.69%</td><td style="text-align:right">97.25%</td><td style="text-align:right">96.38%</td><td style="text-align:right">3</td></tr>
+          <tr><td>28</td><td style="text-align:right">84.38%</td><td style="text-align:right">96.44%</td><td style="text-align:right">97.97%</td><td style="text-align:right">84.38%</td><td style="text-align:right">96.44%</td><td style="text-align:right">97.97%</td><td style="text-align:right">12</td></tr>
+          <tr><td>32</td><td style="text-align:right">84.38%</td><td style="text-align:right">97.39%</td><td style="text-align:right">98.06%</td><td style="text-align:right">84.38%</td><td style="text-align:right">97.39%</td><td style="text-align:right">98.06%</td><td style="text-align:right">20</td></tr>
+          <tr><td>64</td><td style="text-align:right">90.62%</td><td style="text-align:right">98.08%</td><td style="text-align:right">98.55%</td><td style="text-align:right">90.62%</td><td style="text-align:right">98.08%</td><td style="text-align:right">98.55%</td><td style="text-align:right">27</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.82rem;color:#888;margin-top:0.75rem;">
+      <strong>Caption:</strong> gpt-oss-120b performance with sampling budget for max sequence length of 16,384 on the 64 PBEBench instances with ground-truth cascade length 10. The Nulls column counts cases (out of Sampling Budget × 32) where the chain of thought fails to terminate within the max sequence length.
+    </p>
+  </div>
+</section>
+
 <!-- ===== DATASET ===== -->
 <section id="dataset">
   <div class="container">

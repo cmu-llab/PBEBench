@@ -7,7 +7,7 @@
     "complexity": 10.58,
     "reorder_acc": 99.7,
     "reorder_uacc": 99.6,
-    "is_reasoning": false,
+    "is_reasoning": true,
     "is_moe": false,
     "is_closed": true,
     "company": "openai"
@@ -20,8 +20,8 @@
     "complexity": 10.93,
     "reorder_acc": 97.5,
     "reorder_uacc": 98.8,
-    "is_reasoning": false,
-    "is_moe": false,
+    "is_reasoning": true,
+    "is_moe": true,
     "is_closed": true,
     "company": "openai"
   },
@@ -33,7 +33,7 @@
     "complexity": 8.36,
     "reorder_acc": 92.8,
     "reorder_uacc": 89.7,
-    "is_reasoning": false,
+    "is_reasoning": true,
     "is_moe": false,
     "is_closed": true,
     "company": "google"
@@ -72,8 +72,8 @@
     "complexity": 6.96,
     "reorder_acc": 86.3,
     "reorder_uacc": 92.6,
-    "is_reasoning": false,
-    "is_moe": false,
+    "is_reasoning": true,
+    "is_moe": true,
     "is_closed": true,
     "company": "openai"
   },
@@ -150,7 +150,7 @@
     "complexity": 4.00,
     "reorder_acc": 68.0,
     "reorder_uacc": 91.3,
-    "is_reasoning": false,
+    "is_reasoning": true,
     "is_moe": true,
     "is_closed": false,
     "company": "qwen"
