@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "openai/gpt-oss-120b" --input_path "data/adaptive_balanced_1008_complete_promptsfile.json" --output_path "outputs/ada_bal_1008_gpt_oss_120b_8192_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192

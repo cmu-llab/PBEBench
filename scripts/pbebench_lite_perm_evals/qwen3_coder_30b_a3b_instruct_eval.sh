@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "Qwen/Qwen3-Coder-30B-A3B-Instruct" --input_path "data/adaptive_balanced_1008_permutation_promptsfile.jsonl" --output_path "outputs/pbebench_lite_perm/pbebench_lite_perm_qwen3_coder_30b_a3b_instruct_8192_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192 --port 8002

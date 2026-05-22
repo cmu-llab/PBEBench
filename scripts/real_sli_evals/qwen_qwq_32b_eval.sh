@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "Qwen/QwQ-32B" --input_path "data/real_sli/real_sli_promptsfile.json" --output_path "outputs/real_sli/real_sli_qwen_qwq_32b_32768_multi_32_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 32768 --port 8002 --num_samples 32

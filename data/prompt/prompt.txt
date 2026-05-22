@@ -1,0 +1,15 @@
+Follow the instruction below to solve the code completion task:
+We will provide the input corpus and corresponding output corpus. Each element in the corpus is a string and the output is transformed from the input one. You need to find the rules behind them and order the rules in the correct way(Notice that the rules can interact with each other thus the order will influence the final outcome). The rules should be written as python function replace('A', 'B')
+Here is one example:
+"inputs": ["abc", "ebc", "aba"], "outputs": ["edc", "edc", "aba"]
+"programs": ["replace('bc','dc')", "replace('ad','ed')"]
+We provide some restrictions for you:
+1. Each rule must transform exactly {rules_length} characters. For example if rules_length = 2 it only allows programs like replace('bc','dc') since 'bc' and 'dc' both have 2 characters but programs such as replace('abc','dc') or replace('bc','adc') are not allowed since either the input length 'abc' or the output length 'adc' of rules are longer than 2.
+2. Only characters: {characters} are included
+3. The maximum number of rules are {rules_num}
+Please give me the programs of rules behind following input corpus and output corpus:
+"inputs": {inputs_list}, "outputs": {outputs_list}.
+At the end of your answer list the rules as format:
+"programs": [List of programs]
+Make sure the entire output is formatted using code blocks (triple backticks ```). 
+Each section (Inputs, Outputs, and Programs) should be enclosed within its own code block.

@@ -1,0 +1,39 @@
+{"inputs": ["cat", "bat", "hat"],"outputs": ["cut", "but", "hut"], "programs": ["replace('a','u')"],"bfcc_dag": [[0, "N", 0]]}
+{"inputs": ["kite", "book", "sky"], "outputs": ["cite", "booc", "scy"], "programs": ["replace('k','c')"], "bfcc_dag": []}
+{"inputs": ["cow", "how", "town"], "outputs": ["cou", "hou", "toun"], "programs": ["replace('ow','ou')"], "bfcc_dag": []}
+{"inputs": ["phone", "graph", "dolphin"], "outputs": ["fone", "graf", "dolfun"], "programs": ["replace('ph','f')"], "bfcc_dag": []}
+{"inputs": ["abc", "def", "abcabc"],"outputs": ["xbc", "def", "xbcxbc"],"programs": ["replace('a','x')"], "bfcc_dag": []}
+{"inputs":["bat","cab","abba"],"outputs":["bet","ceb","ebbe"],"programs":["replace('a','e')"],"bfcc_dag":[]}
+{"inputs": ["cat", "apple", "aardvark"], "outputs": ["cit", "ipple", "iirdvirk"], "programs": ["replace('a','e')", "replace('e','i')"], "bfcc_dag": [[0,"F",1]]}
+{"inputs": ["hello", "world", "helloworld"],"outputs": ["hewwo", "worwd", "hewwowrowd"],"programs": ["replace('l','w')"],"bfcc_dag": []}
+{"inputs": ["cat", "dog", "elephant"],"outputs": ["ct", "dg", "elephnt"],"programs": ["replace('a','')"],"bfcc_dag": []}
+{"inputs":["acid","civic","ace"],"outputs":["abid","bivib","abe"],"programs":["replace('c','b')","replace('b','c')"],"bfcc_dag":[[1,"CF",0]]}
+{"inputs":["apple","snapple","app"],"outputs":["axple","snxpple","xp"],"programs":["replace('ap','xp')","replace('p','q')"],"bfcc_dag":[[0,"B",1]]}
+
+
+{"inputs":["abcd","abdc","acbd"],"outputs":["ebcd","ebdc","ecbd"],"programs":["replace('a','e')","replace('d','x')"],"bfcc_dag":[[0,"N",1],[1,"N",0]]}
+{"inputs":["ac","ca","aca"],"outputs":["bc","ab","bab"],"programs":["replace('a','b')","replace('c','a')"],"bfcc_dag":[[0,"N",1],[1,"CF",0]]}
+{"inputs": ["ac", "ca", "abc"],"outputs": ["bd", "db", "bbd"],"programs": ["replace('a','b')", "replace('c','d')"],"bfcc_dag": [[0,"N",1], [1,"N",0]]}
+{"inputs": ["abc", "def", "abcdef"],"outputs": ["xbc", "dyf", "xbcdyf"],"programs": ["replace('a','x')", "replace('e','y')"],"bfcc_dag": [[0,"N",1], [1,"N",0]]}
+{"inputs": ["ace", "cab", "face"], "outputs": ["ice", "cib", "fice"], "programs": ["replace('a','i')", "replace('ce','se')"], "bfcc_dag": [[0,"B",1],[1,"N",0]]}
+{"inputs":["star","arts","rats"],"outputs":["stxr","xrts","rxst"],"programs":["replace('a','x')","replace('t','r')"],"bfcc_dag":[[0,"B",1],[1,"F",0]]}
+{"inputs":["xyz","zyx","xxyyzz"],"outputs":["wvz","zvw","wwvvzz"],"programs":["replace('x','y')","replace('y','v')","replace('v','w')"],"bfcc_dag":[[1,"CF",0],[2,"F",1]]}
+{"inputs":["abcd","dcba","abba"],"outputs":["xbcd","dcbx","xbbx"],"programs":["replace('a','x')","replace('x','y')","replace('y','z')"],"bfcc_dag":[[0,"B",1],[1,"CB",2]]}
+{"inputs": ["abc", "def", "abcdef"],"outputs": ["azc", "def", "azcdef"],"programs": ["replace('b','z')", "replace('z','y')"],"bfcc_dag": [[0,"F",1], [1,"N",0]]}
+{"inputs": ["abab", "aabc", "ababc"],"outputs": ["xbab", "xabc", "xbabc"],"programs": ["replace('a','x')", "replace('ab','y')"],"bfcc_dag": [[0,"B",1], [1,"N",0]]}
+{"inputs": ["abc", "def", "abcdef"],"outputs": ["xbc", "def", "xbcdef"],"programs": ["replace('a','x')", "replace('d','a')"],"bfcc_dag": [[0,"N",1], [1,"CF",0]]}
+{"inputs": ["abc", "abbc", "abbbc"],"outputs": ["abc", "axc", "axxc"],"programs": ["replace('bb','x')", "replace('b','y')"],"bfcc_dag": [[0,"N",1], [1,"CB",0]]}
+{"inputs": ["cat", "act", "cactus"], "outputs": ["cdt", "dct", "ddtus"], "programs": ["replace('c','d')", "replace('a','c')"], "bfcc_dag": [[0,"N",1], [1,"CF",0]]}
+
+
+
+{"inputs":["abcde","fghij","abcdefghij"],"outputs":["xbcde","fgyij","xbcdefgyij"],"programs":["replace('a','x')","replace('h','y')","replace('x','z')","replace('y','w')"],"bfcc_dag":[[0,"F",2],[1,"F",3],[2,"B",0],[3,"CB",1]]}
+{"inputs":["alpha","beta","gamma"],"outputs":["gamma","zeta","epsilon"],"programs":["replace('a','b')","replace('b','g')","replace('g','e')","replace('e','z')"],"bfcc_dag":[[0,"F",1],[1,"F",2],[2,"B",3]]}
+{"inputs": ["banana", "apple", "grape"], "outputs": ["bonono", "ipple", "gripe"], "programs": ["replace('a','e')", "replace('e','i')", "replace('i','o')", "replace('o','u')"], "bfcc_dag": [[0,"F",1], [1,"F",2], [2,"F",3]]}
+{"inputs": ["abba", "cab", "abracadabra"], "outputs": ["xyyx", "cyx", "xyrxydxyx"], "programs": ["replace('ab','x')", "replace('x','y')"], "bfcc_dag": [[0,"F",1], [1,"CB",0]]}
+{"inputs": ["facetious", "abstemious", "adventitious"], "outputs": ["focetous", "obstomous", "odvontous"], "programs": ["replace('a','e')", "replace('e','i')", "replace('i','o')"], "bfcc_dag": [[0,"F",1], [1,"F",2], [2,"N",0]]}
+{"inputs": ["abc", "abcd", "abbc"], "outputs": ["cdef", "cdefd", "cddec"], "programs": ["replace('ab','cd')", "replace('bc','de')", "replace('cd','ef')"], "bfcc_dag": [[0,"F",1], [1,"F",2], [2,"B",0]]}
+{"inputs":["xyz","zyx","xxyyzz"],"outputs":["wvz","zvw","wwvvzz"],"programs":["replace('x','y')","replace('y','v')","replace('v','w')","replace('z','')"],"bfcc_dag":[[0,"B",3],[1,"CF",0],[2,"F",3]]}
+{"inputs": ["abcde", "fghij", "abcdefghij"],"outputs": ["xbcde", "fghyj", "xbcdefghyj"],"programs": ["replace('a','x')", "replace('i','y')", "replace('x','z')", "replace('y','w')"],"bfcc_dag": [[0,"F",2], [0,"N",1], [0,"N",3], [1,"F",3], [1,"N",0], [1,"N",2], [2,"B",0], [2,"N",1], [2,"N",3], [3,"B",1], [3,"N",0], [3,"N",2]]}
+{"inputs": ["abcde", "fghij", "abcdefghij"],"outputs": ["xbcde", "fgyij", "xbcdefgyij"],"programs": ["replace('a','x')", "replace('h','y')", "replace('x','z')", "replace('y','w')"],"bfcc_dag": [[0,"F",2], [0,"N",1], [0,"N",3], [1,"F",3], [1,"N",0], [1,"N",2], [2,"B",0], [2,"N",1], [2,"N",3], [3,"B",1], [3,"N",0], [3,"N",2]]}
+{"inputs":["ab","bc","abc","abcd","abcdef"],"outputs":["ef","de","cde","efcd","efdefgh"],"programs":["replace('ab','cd')","replace('bc','de')","replace('cd','ef')","replace('de','fg')","replace('ef','gh')"],"bfcc_dag":[[0,"F",2],[0,"N",1],[0,"N",3],[0,"N",4],[1,"F",3],[1,"N",0],[1,"N",2],[1,"N",4],[2,"F",4],[2,"N",0],[2,"N",1],[2,"N",3],[3,"N",0],[3,"N",1],[3,"N",2],[3,"N",4],[4,"N",0],[4,"N",1],[4,"N",2],[4,"N",3]]}

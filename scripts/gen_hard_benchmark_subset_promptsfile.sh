@@ -1,0 +1,1 @@
+python scripts/validate_and_generate_c4d_promptsfile.py data/adaptive_balanced_240_hard_100_inputs_11_20_cascade.jsonl 100 20 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ

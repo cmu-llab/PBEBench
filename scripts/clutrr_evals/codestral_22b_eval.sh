@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "mistralai/Codestral-22B-v0.1" --input_path "data/clutrr_v1_all_test_promptsfile.json" --output_path "outputs/clutrr_codestral_22b_2048_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 2048 --port 8003

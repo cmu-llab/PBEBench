@@ -1,0 +1,11 @@
+python src/data_generation/improved_generate_with_rejection_sampling.py \
+    --size 240 \
+    --min-seq-len 11 \
+    --max-seq-len 20 \
+    --num-inputs 100 \
+    --output data/adaptive_balanced_240_hard_100_inputs_11_20_cascade.jsonl \
+    --min-input-len 2 \
+    --max-input-len 6 \
+    --stats data/generation_stats.json \
+    --vocab abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ \
+    --dedupe  # use --no-dedupe to disable

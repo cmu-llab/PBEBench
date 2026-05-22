@@ -1,0 +1,1 @@
+python -m vllm.entrypoints.openai.api_server --model "Qwen/Qwen3-32B" --tokenizer "Qwen/Qwen3-32B" --dtype auto --port ${1} --tensor_parallel_size 2

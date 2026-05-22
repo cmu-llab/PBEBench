@@ -1,0 +1,1 @@
+// how to deal with 0, 1: Check for (modified output1 overlap with original input2) + ((Original output1 and input 2)Either fully found in each other(one encompasses the other, middle works too) OR Left or Right overlap with unmodified output1 and input2)

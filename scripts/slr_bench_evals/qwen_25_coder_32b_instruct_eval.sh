@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "Qwen/Qwen2.5-Coder-32B-Instruct" --input_path "AIML-TUDA/SLR-Bench" --config_path 'v1-All' --output_path "outputs/slr_bench_qwen_25_coder_32b_instruct_8192_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192 --port 8002

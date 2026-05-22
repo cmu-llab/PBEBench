@@ -1,0 +1,5 @@
+    # python src/eval/eval.py --model_ckpt "mistralai/Codestral-22B-v0.1" --input_path "data/cascaded_checked_balanced_program_transformations_dataset.jsonl" --output_path "outputs/codestral_preds_balanced_program_transformations_dataset.jsonl" --engine_type "vllm" --top_p 0.95 --temperature 0.7 --max_new_tokens 2048
+
+    # python src/eval/eval.py --model_ckpt "mistralai/Codestral-22B-v0.1" --input_path "data/cascaded_checked_balanced_program_transformations_dataset.jsonl" --output_path "outputs/codestral_preds_balanced_program_transformations_dataset.jsonl" --engine_type "huggingface" --top_p 0.95 --temperature 0.7 --max_new_tokens 2048
+
+    # python src/eval/eval_old.py --model_ckpt "Qwen/Qwen3-32B" --input_path "data/cascaded_checked_balanced_program_transformations_dataset.jsonl" --output_path "outputs/qwen3_32b_8192_ctxt_len_preds_balanced_program_transformations_dataset.jsonl" --engine_type "vllm" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192

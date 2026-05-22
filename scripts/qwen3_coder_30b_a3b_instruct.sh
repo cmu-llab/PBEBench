@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "Qwen/Qwen3-Coder-30B-A3B-Instruct" --input_path "data/adaptive_balanced_1008_complete_promptsfile.json" --output_path "outputs/ada_bal_1008_qwen3_coder_30b_a3b_instruct_2048_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 2048  --no_think

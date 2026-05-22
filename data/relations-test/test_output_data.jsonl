@@ -1,0 +1,3 @@
+{"inputs": ["abc", "ebc", "aba"], "outputs": ["edc", "edc", "aba"], "programs": ["replace('bc','dc')", "replace('ad','ed')"], "bfcc_dag": []}
+{"inputs": ["abc", "ebc", "aba", "adc"], "outputs": ["edc", "edc", "aba", "edc"], "programs": ["replace('bc','dc')", "replace('ad','ed')"], "bfcc_dag": []}
+{"inputs": ["abc", "ebc", "aba", "adc", "bda"], "outputs": ["edc", "edc", "aba", "edc", "bca"], "programs": ["replace('bc','dc')", "replace('da','ca')", "replace('ad','ed')"], "bfcc_dag": []}

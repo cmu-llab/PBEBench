@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "mistralai/Codestral-22B-v0.1" --input_path "AIML-TUDA/SLR-Bench" --config_path 'v1-All' --output_path "outputs/slr_bench_codestral_22b_2048_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 2048 --port 8004

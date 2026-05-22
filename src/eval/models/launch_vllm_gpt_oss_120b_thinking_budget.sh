@@ -1,0 +1,1 @@
+python -m vllm.entrypoints.openai.api_server --model "openai/gpt-oss-120b" --tokenizer "openai/gpt-oss-120b" --dtype auto --port ${1} --gpu-memory-utilization 0.95 --reasoning-parser openai_gptoss

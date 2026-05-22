@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "Qwen/Qwen3-4B-Instruct-2507" --input_path "data/adaptive_balanced_1008_complete_promptsfile.json" --output_path "outputs/pbebench_lite/pbebench_lite_qwen3_4b_instruct_8192_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192 --port 8002 --num_samples 1

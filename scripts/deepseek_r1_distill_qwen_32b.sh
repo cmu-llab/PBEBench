@@ -1,0 +1,1 @@
+python src/eval/models/run_vllm_inference_v2.py --model_ckpt "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" --input_path "data/adaptive_balanced_1008_complete_promptsfile.json" --output_path "outputs/ada_bal_1008_deepseek_r1_distill_qwen_32b_8192_async.jsonl" --top_p 0.95 --temperature 0.7 --max_new_tokens 8192

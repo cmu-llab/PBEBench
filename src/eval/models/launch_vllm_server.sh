@@ -1,0 +1,1 @@
+python -m vllm.entrypoints.openai.api_server --model "${1}" --tokenizer "${1}" --dtype auto --port 8002
