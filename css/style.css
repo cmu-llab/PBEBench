@@ -386,6 +386,8 @@ table.comparison tbody tr.best { background: #fff3cd; font-weight: 700; }
   gap: 1rem;
 }
 
+.dataset-card + .dataset-card { margin-top: 1.5rem; }
+
 .dataset-card h3 { font-size: 1.15rem; font-weight: 700; }
 .dataset-card p  { font-size: 0.9rem; color: var(--cmu-gray); }
 
