@@ -22,7 +22,7 @@
     "reorder_uacc": 98.8,
     "is_reasoning": true,
     "is_moe": true,
-    "is_closed": true,
+    "is_closed": false,
     "company": "openai"
   },
   {
@@ -74,7 +74,7 @@
     "reorder_uacc": 92.6,
     "is_reasoning": true,
     "is_moe": true,
-    "is_closed": true,
+    "is_closed": false,
     "company": "openai"
   },
   {
